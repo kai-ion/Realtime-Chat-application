@@ -1,65 +1,105 @@
-# Realtime Chat Application
+# Chatire - Real-time Chat Application
 
-A real-time chat application built with Django.
+A real-time chat application built with Django REST framework and Vue.js.
+
+## Technologies Used
+
+### Backend
+- Django 5.1.7
+- Django REST Framework 3.15.2
+- Django REST Framework SimpleJWT
+- Djoser (for authentication)
+- Django CORS Headers
+
+### Frontend
+- Vue.js 2.x
+- Bootstrap 4
+- jQuery
+- Webpack
+
+## Project Structure
+```
+chatire/
+├── backend/
+│   ├── chatire/          # Django project settings
+│   ├── manage.py
+│   └── requirements.txt
+│
+└── frontend/
+    ├── src/
+    │   ├── components/   # Vue components
+    │   ├── router/       # Vue router configuration
+    │   └── App.vue       # Root component
+    └── index.html        # Frontend entry point
+```
 
 ## Setup Instructions
 
-### Prerequisites
-- Python 3.x
-- pip (Python package installer)
-
-### Project Setup
-
+### Backend Setup
 1. Create and activate virtual environment:
 ```bash
-# Create virtual environment
 python -m venv venv
-
-# Activate virtual environment (Windows)
-.\venv\Scripts\activate
+source venv/Scripts/activate  # Windows
+source venv/bin/activate      # Linux/Mac
 ```
 
-2. Install required packages:
+2. Install dependencies:
 ```bash
-pip install django
+pip install -r requirements.txt
 ```
 
-3. Create Django project:
-```bash
-django-admin startproject chatire .
-```
-
-4. Run database migrations:
+3. Run migrations:
 ```bash
 python manage.py migrate
 ```
 
-5. Start the development server:
+4. Start Django development server:
 ```bash
 python manage.py runserver
 ```
 
-The application will be available at http://127.0.0.1:8000/
+The backend server will be available at http://localhost:8000
 
-## Project Structure
+### Frontend Setup
+1. Navigate to frontend directory:
+```bash
+cd chatire-frontend
 ```
-Realtime-Chat-application/
-├── manage.py
-├── chatire/
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-└── venv/
+
+2. Install dependencies:
+```bash
+npm install
 ```
+
+3. Start development server:
+```bash
+npm run dev
+```
+
+The frontend application will be available at http://localhost:8080
+
+## API Endpoints
+
+### Authentication Endpoints
+- POST `/auth/users/` - Register new user
+- POST `/auth/token/login/` - Login user (get token)
+- POST `/auth/token/logout/` - Logout user
+- GET `/auth/users/me/` - Get current user details
+
+## Features
+- User registration and authentication
+- Token-based authentication
+- Real-time chat functionality (coming soon)
+- Responsive UI with Bootstrap 4
 
 ## Development
-- The development server automatically reloads when code changes are detected
-- To stop the server, press Ctrl+C in the terminal
-- To deactivate the virtual environment, type `deactivate` in the terminal
+- Backend API is configured with CORS to accept requests from frontend
+- Authentication is handled using Djoser and Token Authentication
+- Frontend uses Vue Router for navigation and route protection
 
-## Next Steps
-1. Create a new app for chat functionality
-2. Set up user authentication
-3. Implement real-time chat features
-4. Add styling and frontend components 
+## Contributing
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request 
